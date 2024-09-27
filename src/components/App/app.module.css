@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 1rem;
+}
+
+.h1 {
+  font-size: 5rem;
+  text-align: center;
+}
+
+.columns {
+  display: inline-flex;
+  width: 100%;
+}
