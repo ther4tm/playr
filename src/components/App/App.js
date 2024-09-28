@@ -5,10 +5,10 @@ import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import resources from '../../api/Spotify';
 
-import catalogue from "../FakeDataForTesting/FakeDataForTesting.mjs"
+//Hard coded fake catalogue for testing
+//import catalogue from "../FakeDataForTesting/FakeDataForTesting.mjs"
 
 const {
-  getAccessToken,
   searchTracks,
   searchAlbumTracks,
   searchArtistTracks
@@ -35,35 +35,48 @@ const App = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    /*// This function enables any case partial search of the catalogue
+    /*
+    //This is all for the hardcoded static search before its hooked up to the Spotify API
+    // This function enables any case partial search of the catalogue
     const partialSearch = (arr, query) => {
       return arr.filter((placeHolder) => placeHolder[choice].toLowerCase().includes(query.toLowerCase()));
     };
     // Needs to return the state to an array otherwise it will say the .map of the Track component is not a function because its trying to map something that isnt an array
-    setSelected(partialSearch(catalogue, search));*/
+    setSelected(partialSearch(catalogue, search));
+    */
 
-    
-if (choice === "name") {
-  return searchTracks(search).then(track => {
-      setSelected(track.tracks.item.map((result) => ({
+  //Handles the search dependant on what radio button is seleected    
+  if (choice === "name") {
+    return searchTracks(search).then(track => {
+        setSelected(track.tracks.items.map((result) => ({
+          id: result.id,
+          name: result.name,
+          artist: result.artists[0].name,
+          album: result.album.name,
+          uri: result.uri
+        })))
+    });
+    } else if (choice === "album") {
+    return searchAlbumTracks(search).then(track => {
+        setSelected(track.tracks.items.map((result) => ({
+          id: result.id,
+          name: result.name,
+          artist: result.artists[0].name,
+          album: result.album.name,
+          uri: result.uri
+        })));
+        });
+    } else {
+    return searchArtistTracks(search).then(track => {
+      setSelected(track.tracks.items.map((result) => ({
         id: result.id,
         name: result.name,
         artist: result.artists[0].name,
         album: result.album.name,
         uri: result.uri
-      })))
+      })));
       });
-  } else if (choice === "album") {
-  return searchAlbumTracks(search).then(track => {
-      setSelected(track.tracks.items);
-      })
-  } else {
-  return searchArtistTracks(search).then(track => {
-    setSelected(track.tracks.items);
-    })
-  };
-
-
+    };
   };
 
   const addTrack = (track) => {

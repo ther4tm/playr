@@ -16,82 +16,57 @@ const redirectUri = 'http://localhost:3000/';
         },
     });
 
-    return await response.json();
+    /* This is the format that the JSON response comes back as from the getAccessToken function
+{
+   "access_token": "some random numbers and letters that is the token",
+   "token_type": "bearer",
+   "expires_in": 3600              //1 hour
+}
+*/
+
+    return await response.json(); //converts the response to JSON
     };
 
    //Get track information function
     async function searchTracks(search) {
     const accessToken = await getAccessToken();
-    const response = await fetch(`https://api.spotify.com/v1/search?q=${search}&type=track&limit=5`, {
+    const response = await fetch(`https://api.spotify.com/v1/search?q=${search}&type=track&limit=5`, { //Limited to 5 tracks at the minute
         method: 'GET',
         headers: { 'Authorization': 'Bearer ' + accessToken.access_token },
     });
 
-    return await response.json();
+    return await response.json(); //converts the response to JSON
     };
 
     //Get album information function
     async function searchAlbumTracks(search) {
     const accessToken = await getAccessToken();
-    const response = await fetch(`https://api.spotify.com/v1/search?q=album%3A%22${search}&type=track&limit=5`, {
+    const response = await fetch(`https://api.spotify.com/v1/search?q=album%3A%22${search}&type=track&limit=5`, { //Limited to 5 tracks at the minute
         method: 'GET',
         headers: { 'Authorization': 'Bearer ' + accessToken.access_token },
     });
 
-    return await response.json();
+    return await response.json(); //converts the response to JSON
     };
 
     //Get artist information function
     async function searchArtistTracks(search) {
         const accessToken = await getAccessToken();
-        const response = await fetch(`https://api.spotify.com/v1/search?q=artist%3A%22${search}&type=track&limit=5`, {
+        const response = await fetch(`https://api.spotify.com/v1/search?q=artist%3A%22${search}&type=track&limit=5`, { //Limited to 5 tracks at the minute
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + accessToken.access_token },
         });
     
-        return await response.json();
+        return await response.json(); //converts the response to JSON
         };
 
 //};
 
 
 const resources = {
-    getAccessToken,
     searchTracks,
     searchAlbumTracks,
     searchArtistTracks
 };
 
 export default resources;
-
-/* This is the format that the JSON response comes back as from the getAccessToken function
-{
-   "access_token": "some random numbers and letters that is the token",
-   "token_type": "bearer",
-   "expires_in": 3600
-}
-*/
-
-const temp = "carrion";
-const tempAlbum = "definitely maybe";
-const tempArtist = "oasis";
-
-/*
-//Call for searching tracks
-searchTracks(temp).then(track => {
-    console.log(track.tracks.items)});
-*/
-
-/*
-//Call for searching albums and returning tracks on matching albums
-searchAlbumTracks(tempAlbum).then(track => {
-    console.log(track.tracks.items)
-});
-*/
-
-/*
-//Call for searching artists and returning tracks by matching artists
-searchArtistTracks(tempArtist).then(track => {
-    console.log(track.tracks.items)
-});
-*/
