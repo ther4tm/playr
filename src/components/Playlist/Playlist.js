@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './playlist.module.css';
 import Tracklist from '../Tracklist/Tracklist';
 
@@ -11,6 +11,7 @@ const Playlist = (props) => {
             type='text'
             value={props.playlistName}
             onChange={props.onChange}
+            placeholder="New Playlist"
             />
 
             <Tracklist

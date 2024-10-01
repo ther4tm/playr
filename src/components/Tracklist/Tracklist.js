@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './tracklist.module.css';
 import Track from '../Track/Track';
 
 const Tracklist = (props) => {
-const temp = props;
     return (
         <div className={style.container}>
         {props.tracks.map((song) => {
