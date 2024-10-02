@@ -1,0 +1,17 @@
+.button {
+    font-family: Poppins;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 1.5rem;
+    width: 20%;
+    min-width: auto;
+    border: none;
+    background-color: rgb(64, 163, 163);
+    margin-top: 1rem;
+    &:hover {
+        background-color: rgb(58, 148, 148);
+    }
+    &:active {
+        box-shadow: inset 0px 0px 3px 2px rgb(25, 70, 70);
+    }
+}

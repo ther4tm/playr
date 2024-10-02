@@ -7,6 +7,7 @@ import LoginLogoutButtons from '../LoginLogout/LoginLogout';
 import resources from '../../api/Spotify';
 
 const {
+  currentToken,
   searchTracks,
   searchAlbumTracks,
   searchArtistTracks,
@@ -96,44 +97,60 @@ const App = () => {
     });
   };
 
-  return (
-    <div className={style.container}>
-      <h1 className={style.h1}>Playr</h1>
-      
-      <SearchBar
-      value={search}
-      onChange={handleChange}
-      onClick={handleSearch}
-      onSelect={handleChoice}
-      selector={choice}
-      />
+  //Login splash
+  if (!currentToken.access_token) {
+    return (
+      <div className={style.container}>
+        <h1 className={style.h1}>Playr</h1>
+        <div>
+          <LoginLogoutButtons
+          login={loginWithSpotifyClick}
+          />
+        </div>
+      </div>
+    );
+  }
 
-      <div className={style.columns}>
+  //App once logged in
+  if (currentToken.access_token) {
+    return (
+      <div className={style.container}>
+        <h1 className={style.h1}>Playr</h1>
         
-        <SearchResults 
-        userSearch={selected}
-        addTrack={addTrack}
+        <SearchBar
+        value={search}
+        onChange={handleChange}
+        onClick={handleSearch}
+        onSelect={handleChoice}
+        selector={choice}
         />
 
-        <Playlist
-        playlistTracks={playlistTracks}
-        removeTrack={removeTrack}
-        value={playlistName}
-        onChange={handlePlaylistName}
-        playlistName={playlistName}
-        onClick={handleSubmitPlaylist}
-        />
+        <div className={style.columns}>
+          
+          <SearchResults 
+          userSearch={selected}
+          addTrack={addTrack}
+          />
+
+          <Playlist
+          playlistTracks={playlistTracks}
+          removeTrack={removeTrack}
+          value={playlistName}
+          onChange={handlePlaylistName}
+          playlistName={playlistName}
+          onClick={handleSubmitPlaylist}
+          />
+        </div>
+        <div>
+          <LoginLogoutButtons
+          userData={userData}
+          logout={logoutClick}
+          refresh={refreshTokenClick}
+          />
+        </div>
       </div>
-      <div>
-        <LoginLogoutButtons
-        userData={userData}
-        login={loginWithSpotifyClick}
-        logout={logoutClick}
-        refresh={refreshTokenClick}
-        />
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
