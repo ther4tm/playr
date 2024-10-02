@@ -14,12 +14,38 @@ const SearchBar = (props) => {
                 />
 
                 <div className={style.radio}>
-                <label for="artist">Artist</label>
-                <input type="radio" name="selector" id="artist" value="artist" onClick={props.onSelect} checked={props.selector === "artist"}/>
-                <label for="album">Album</label>
-                <input type="radio" name="selector" id="album" value="album" onClick={props.onSelect} checked={props.selector === "album"}/>
-                <label for="title">Title</label>
-                <input type="radio" name="selector" id="title" value="name" onClick={props.onSelect} checked={props.selector === "name"}/>
+                <label
+                for="artist">Artist</label>
+
+                <input
+                type="radio"
+                name="selector"
+                id="artist"
+                value="artist"
+                onClick={props.onSelect}
+                checked={props.selector === "artist"}/>
+
+                <label
+                for="album">Album</label>
+
+                <input
+                type="radio"
+                name="selector"
+                id="album"
+                value="album"
+                onClick={props.onSelect}
+                checked={props.selector === "album"}/>
+
+                <label
+                for="title">Track</label>
+
+                <input
+                type="radio"
+                name="selector"
+                id="title"
+                value="name"
+                onClick={props.onSelect}
+                checked={props.selector === "name"}/>
                 </div>
 
                 <button

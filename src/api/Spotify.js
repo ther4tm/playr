@@ -198,7 +198,7 @@ let userData;
 //Searches
    //Get track information function
    async function searchTracks(search) {
-    const response = await fetch(`https://api.spotify.com/v1/search?q=${search}&type=track&limit=5`, { //Limited to 5 tracks at the minute
+    const response = await fetch(`https://api.spotify.com/v1/search?q=${search}&type=track&limit=15`, { //Limited to 15 tracks at the minute
         method: 'GET',
         headers: { 'Authorization': 'Bearer ' + currentToken.access_token },
     });
@@ -208,7 +208,7 @@ let userData;
 
     //Get album information function
     async function searchAlbumTracks(search) {
-    const response = await fetch(`https://api.spotify.com/v1/search?q=album%3A%22${search}&type=track&limit=5`, { //Limited to 5 tracks at the minute //q=album%3A%22 is the part of the url that is the filter by album section of the fetch
+    const response = await fetch(`https://api.spotify.com/v1/search?q=album%3A%22${search}&type=track&limit=15`, { //Limited to 15 tracks at the minute //q=album%3A%22 is the part of the url that is the filter by album section of the fetch
         method: 'GET',
         headers: { 'Authorization': 'Bearer ' + currentToken.access_token },
     });
@@ -218,7 +218,7 @@ let userData;
 
     //Get artist information function
     async function searchArtistTracks(search) {
-        const response = await fetch(`https://api.spotify.com/v1/search?q=artist%3A%22${search}&type=track&limit=5`, { //Limited to 5 tracks at the minute
+        const response = await fetch(`https://api.spotify.com/v1/search?q=artist%3A%22${search}&type=track&limit=15`, { //Limited to 15 tracks at the minute
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + currentToken.access_token },
         });

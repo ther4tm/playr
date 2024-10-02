@@ -1,18 +1,36 @@
 * {
   margin: 0;
   padding: 0;
+  background-color: rgb(40, 40, 40);
 }
 
 .container {
   margin: 1rem;
 }
 
+.header {
+
+}
+
+.logo {
+  height: 20rem;
+  align-content: center;
+}
+
 .h1 {
+  font-family: Poppins;
   font-size: 5rem;
   text-align: center;
+  color: rgb(255, 255, 255);
 }
 
 .columns {
   display: inline-flex;
   width: 100%;
+}
+
+.loginButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
 }

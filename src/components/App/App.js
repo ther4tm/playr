@@ -93,7 +93,7 @@ const App = () => {
     const trackUris = playlistTracks.map((track) => track.uri); //Pulls all uris from the created playlist state to push to spotify when creating the playlist
     savePlaylist(playlistName, trackUris).then(() => {
       setPlaylistName('');
-      setPlaylistTracks([]); 
+      setPlaylistTracks([]);
     });
   };
 
@@ -101,8 +101,12 @@ const App = () => {
   if (!currentToken.access_token) {
     return (
       <div className={style.container}>
-        <h1 className={style.h1}>Playr</h1>
-        <div>
+        <div className={style.header}>
+          <div className={style.logo}>
+            <h1 className={style.h1}>Playr</h1>
+          </div>
+        </div>
+        <div className={style.loginButton}>
           <LoginLogoutButtons
           login={loginWithSpotifyClick}
           />
@@ -115,7 +119,16 @@ const App = () => {
   if (currentToken.access_token) {
     return (
       <div className={style.container}>
-        <h1 className={style.h1}>Playr</h1>
+        <div className={style.header}>
+          <div className={style.logo}>
+            <h1 className={style.h1}>Playr</h1>
+          </div>
+          <LoginLogoutButtons
+          userData={userData}
+          logout={logoutClick}
+          refresh={refreshTokenClick}
+          />
+        </div>
         
         <SearchBar
         value={search}
@@ -141,13 +154,7 @@ const App = () => {
           onClick={handleSubmitPlaylist}
           />
         </div>
-        <div>
-          <LoginLogoutButtons
-          userData={userData}
-          logout={logoutClick}
-          refresh={refreshTokenClick}
-          />
-        </div>
+
       </div>
     );
   }

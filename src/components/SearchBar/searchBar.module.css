@@ -1,5 +1,5 @@
 .container {
-    border: 2px dotted #000000;
+    /*border: 2px dotted #000000;*/
     padding: 2.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -16,15 +16,18 @@
     font-size: 1.5rem;
     text-align: center;
     border: none;
-    border-bottom: 0.125rem solid #000000;
-    color: rgba(0, 0, 0, 1);
+    border-bottom: 0.125rem solid rgb(64, 163, 163);
+    color: rgb(255, 255, 255);
     &:hover {
-        background-color: #cccccc;
+        background-color: rgb(50, 50, 50);
     }
     &:focus {
         outline: 0;
-        background-color: #ffffff;
-        border-bottom: 0.125rem dotted #000000;
+        background-color: rgb(50, 50, 50);
+        border-bottom: 0.125rem dotted rgb(64, 163, 163);
+    }
+    &:focus::placeholder { /* Clears the placeholder text when the input is focused */
+        color: transparent;
     }
 }
 
@@ -32,18 +35,17 @@
     margin-top: 1rem;
 }
 
-.radio label, .radio input {
+.radio input {
     font-family: Poppins;
     font-size: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
 }
 
 .radio label {
     font-family: Poppins;
+    color: rgb(255, 255, 255);
     font-size: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: .5rem;
 }
 
 .button {
