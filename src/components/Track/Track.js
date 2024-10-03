@@ -29,12 +29,12 @@ const Track = (props) => {
     return (
         <div className={style.container}>
             <div className={style.top}>
-                <h3>{props.song.name}</h3>
+                <h3 className={style.text}>{props.song.name}</h3>
                 <div className={style.bottomleft}>
-                    <h4>{props.song.artist}</h4>
+                    <p className={style.text}>{props.song.artist}</p>
                 </div>
                 <div className={style.bottomright}>
-                    <h4>{props.song.album}</h4>
+                    <p className={style.text}>{props.song.album}</p>
                 </div>
             </div>
             <div className={style.addremove}>

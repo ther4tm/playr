@@ -91,10 +91,14 @@ const App = () => {
 
   const handleSubmitPlaylist = () => {
     const trackUris = playlistTracks.map((track) => track.uri); //Pulls all uris from the created playlist state to push to spotify when creating the playlist
-    savePlaylist(playlistName, trackUris).then(() => {
-      setPlaylistName('');
-      setPlaylistTracks([]);
-    });
+    if (!playlistName || !trackUris.length) { //Makes sure both playlist and name are not empty
+      return alert("Please provide Playlist name and tracks before saving to Spotify.");
+    } else {
+    savePlaylist(playlistName, trackUris);
+    setPlaylistName('');
+    setPlaylistTracks([]);
+    return alert("Playlist saved!");
+    }
   };
 
   //Login splash

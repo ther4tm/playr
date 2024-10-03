@@ -169,9 +169,6 @@ let userData;
 // Click handlers
   //Save playlist
   const savePlaylist = (playlistName, trackUris) => {
-    if (!playlistName || !trackUris.length) { //Makes sure both playlist and name are not empty
-      return;
-    }
     createPlaylist(playlistName).then(response => { //Creates a playlist
       const playlistId = response.id; //Get the Id for the created playlist to use in next step
       addItemsToPlaylist(playlistId, trackUris) //Add tracks to new playlist
