@@ -1,0 +1,52 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: rgba(50, 50, 50, 0.8);
+}
+
+.playerContainer {
+    display: inline-flex;
+    height: 100%;
+    align-items: center;
+}
+
+.trackInfoContainer {
+    display: inline-flex;
+    float: right;
+    padding-right: 1rem;
+}
+
+.trackTextContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 1rem;
+    text-align: right;
+}
+
+.songTitleContainer {
+    font-family: Poppins;
+    font-size: 1rem;
+    color: rgb(64, 163, 163);
+}
+
+.songArtistContainer {
+    font-family: Poppins;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+}
+
+.songArtworkContainer {
+    display: inline-block; /* treat img as block in div */
+    align-content: center;
+    height: 100%;
+}
+
+.songArtworkContainer img {
+    display: block; /* treat img as block in div */
+    /*align-content: center; /* centre the img in the div */
+    height: 4rem;
+    width: auto;
+}

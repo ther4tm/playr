@@ -1,4 +1,4 @@
-p {
+.info p {
     font-family: Poppins;
     color: rgb(255, 255, 255);
 }
@@ -16,6 +16,7 @@ p {
     /*margin-top: 1rem;*/
     &:hover {
         background-color: rgb(58, 148, 148);
+        cursor: pointer;
     }
     &:active {
         box-shadow: inset 0px 0px 3px 2px rgb(25, 70, 70);
@@ -34,7 +35,7 @@ p {
     margin-top: 1rem;
     &:hover {
         background-color: rgb(58, 148, 148);
-        content: "Log out";
+        cursor: pointer;
     }
     &:active {
         box-shadow: inset 0px 0px 3px 2px rgb(25, 70, 70);

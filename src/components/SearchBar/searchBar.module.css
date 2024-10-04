@@ -18,6 +18,7 @@
     border: none;
     border-bottom: 0.125rem solid rgb(64, 163, 163);
     color: rgb(255, 255, 255);
+    background-color: rgb(40, 40, 40);
     &:hover {
         background-color: rgb(50, 50, 50);
     }
@@ -59,6 +60,7 @@
     margin-top: 1rem;
     &:hover {
         background-color: rgb(58, 148, 148);
+        cursor: pointer;
     }
     &:active {
         box-shadow: inset 0px 0px 3px 2px rgb(25, 70, 70);

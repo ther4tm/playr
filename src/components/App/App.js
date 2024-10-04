@@ -4,6 +4,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import LoginLogoutButtons from '../LoginLogout/LoginLogout';
+import Player from '../Player/Player';
 import resources from '../../api/Spotify';
 
 const {
@@ -24,6 +25,7 @@ const App = () => {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playlistName, setPlaylistName] = useState('');
   const [choice, setChoice] = useState("name"); //This selects what content the user is searching for artist song, name or album
+  const [songPreview, setSongPreview] = useState(''); //This sets the preview url for the preview player
 
   const handleChange = ({target}) => {
       setSearch(target.value);
@@ -37,8 +39,16 @@ const App = () => {
     setPlaylistName(target.value);
   };
 
+  const handleSongPreview = (song) => {
+    setSongPreview(song);
+  };
+
   const handleSearch = (event) => {
     event.preventDefault();
+    if (!search) {
+      return;
+    }
+    refreshTokenClick();
 
     //Handles the search dependant on what radio button is seleected
     if (choice === "name") {
@@ -48,7 +58,9 @@ const App = () => {
             name: result.name,
             artist: result.artists[0].name,
             album: result.album.name,
-            uri: result.uri
+            uri: result.uri,
+            preview: result.preview_url,
+            artwork: result.album.images[0].url
           })))
       });
     } else if (choice === "album") {
@@ -58,7 +70,9 @@ const App = () => {
             name: result.name,
             artist: result.artists[0].name,
             album: result.album.name,
-            uri: result.uri
+            uri: result.uri,
+            preview: result.preview_url,
+            artwork: result.album.images[0].url
           })));
         });
     } else {
@@ -68,7 +82,9 @@ const App = () => {
           name: result.name,
           artist: result.artists[0].name,
           album: result.album.name,
-          uri: result.uri
+          uri: result.uri,
+          preview: result.preview_url,
+          artwork: result.album.images[0].url
         })));
       });
     };
@@ -122,8 +138,8 @@ const App = () => {
   //App once logged in
   if (currentToken.access_token) {
     return (
-      <div className={style.container}>
-        <div className={style.header}>
+      <>
+        <div className={style.container}>
           <div className={style.logo}>
             <h1 className={style.h1}>Playr</h1>
           </div>
@@ -132,34 +148,38 @@ const App = () => {
           logout={logoutClick}
           refresh={refreshTokenClick}
           />
-        </div>
-        
-        <SearchBar
-        value={search}
-        onChange={handleChange}
-        onClick={handleSearch}
-        onSelect={handleChoice}
-        selector={choice}
-        />
-
-        <div className={style.columns}>
           
-          <SearchResults 
-          userSearch={selected}
-          addTrack={addTrack}
+          <SearchBar
+          value={search}
+          onChange={handleChange}
+          onClick={handleSearch}
+          onSelect={handleChoice}
+          selector={choice}
           />
 
-          <Playlist
-          playlistTracks={playlistTracks}
-          removeTrack={removeTrack}
-          value={playlistName}
-          onChange={handlePlaylistName}
-          playlistName={playlistName}
-          onClick={handleSubmitPlaylist}
-          />
+          <div className={style.columns}>
+            
+            <SearchResults 
+            userSearch={selected}
+            addTrack={addTrack}
+            preview={handleSongPreview}
+            />
+
+            <Playlist
+            playlistTracks={playlistTracks}
+            removeTrack={removeTrack}
+            value={playlistName}
+            onChange={handlePlaylistName}
+            playlistName={playlistName}
+            onClick={handleSubmitPlaylist}
+            preview={handleSongPreview}
+            />
+          </div>
         </div>
-
-      </div>
+        <Player
+        previewLink={songPreview}
+        />
+      </>
     );
   }
 }

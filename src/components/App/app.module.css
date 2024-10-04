@@ -1,15 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: rgb(40, 40, 40);
+
 }
 
 .container {
-  margin: 1rem;
-}
-
-.header {
-
+  padding: 1rem;
 }
 
 .logo {

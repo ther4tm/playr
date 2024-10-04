@@ -26,8 +26,28 @@ const Track = (props) => {
         }
     };
 
+    const previewSong = (event) => {
+        props.preview(props.song);
+    };
+
+    const displayPreviewIcon = () => {
+        if (!props.song.preview) {
+            return (
+                <>
+                </>
+            );
+        } else {
+            return (
+                <p className={style.preview} onClick={previewSong}>&#9834;</p>
+            );
+        }
+    };
+
     return (
         <div className={style.container}>
+            <div className={style.playButton}>
+                {displayPreviewIcon()}
+            </div>
             <div className={style.top}>
                 <h3 className={style.text}>{props.song.name}</h3>
                 <div className={style.bottomleft}>

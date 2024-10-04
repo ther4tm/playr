@@ -10,11 +10,28 @@
     background-color: rgb(50, 50, 50);
 }
 
+.playButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    background-color: rgb(50, 50, 50);
+}
+
+.preview {
+    font-size: 1.75rem;
+    color: rgb(255, 255, 255);
+    &:hover {
+        color: rgb(64, 163, 163);
+        cursor: pointer;
+    }
+}
+
 .top {
     font-family: Poppins;
     font-size: 1rem;
     color: rgb(64, 163, 163);
-    width: 90%;
+    width: 80%;
     overflow: hidden; /* Can be changed to scroll if you want to scroll sideways to see the text */
     white-space: nowrap; /* This prevents the text from going onto a second line */
 }
@@ -41,6 +58,7 @@
     width: 100%;
     height: 100%;
     border: none;
+    background-color: rgb(40, 40, 40);
     &:hover {
         font-size: 1.5rem;
         font-weight: bold;
