@@ -19,7 +19,7 @@ const Player = (props) => {
                 <div className={style.songArtworkContainer}>
                     <img
                     src={props.previewLink.artwork}
-                    /*src="https://i.scdn.co/image/ab67616d0000b2734121faee8df82c526cbab2be"*/
+                    alt="Album image"
                     />
                 </div>
             </div>
