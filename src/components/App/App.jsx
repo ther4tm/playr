@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import style from './app.module.css';
-import SearchBar from '../SearchBar/SearchBar';
-import SearchResults from '../SearchResults/SearchResults';
-import Playlist from '../Playlist/Playlist';
-import LoginLogoutButtons from '../LoginLogout/LoginLogout';
-import Player from '../Player/Player';
-import resources from '../../api/Spotify';
+import SearchBar from '../SearchBar/SearchBar.jsx';
+import SearchResults from '../SearchResults/SearchResults.jsx';
+import Playlist from '../Playlist/Playlist.jsx';
+import LoginLogoutButtons from '../LoginLogout/LoginLogout.jsx';
+import Player from '../Player/Player.jsx';
+import resources from '../../api/Spotify.js';
 
 const {
   currentToken,

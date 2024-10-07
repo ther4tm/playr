@@ -19,7 +19,6 @@ const Player = (props) => {
                 <div className={style.songArtworkContainer}>
                     <img
                     src={props.previewLink.artwork}
-                    alt="Album artwork for previewed song"
                     />
                 </div>
             </div>
